@@ -7,28 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0340286715B9A7B100C905C1 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340286615B9A7B100C905C1 /* DDHotKeyCenter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0340287015B9B29100C905C1 /* octo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0340286F15B9B29100C905C1 /* octo.png */; };
+		0340287315B9B6E500C905C1 /* logo_gist.png in Resources */ = {isa = PBXBuildFile; fileRef = 0340287215B9B6E500C905C1 /* logo_gist.png */; };
+		03B4104215B9E66400C18B6F /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B4104115B9E66400C18B6F /* NSData+Base64.m */; };
 		03F1C13015B99B94000EE7EB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F1C12F15B99B94000EE7EB /* Cocoa.framework */; };
 		03F1C13A15B99B94000EE7EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03F1C13815B99B94000EE7EB /* InfoPlist.strings */; };
 		03F1C13C15B99B94000EE7EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F1C13B15B99B94000EE7EB /* main.m */; };
 		03F1C14015B99B94000EE7EB /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 03F1C13E15B99B94000EE7EB /* Credits.rtf */; };
 		03F1C14315B99B94000EE7EB /* PXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F1C14215B99B94000EE7EB /* PXAppDelegate.m */; };
 		03F1C14615B99B94000EE7EB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F1C14415B99B94000EE7EB /* MainMenu.xib */; };
+		03F1C15C15B9A69F000EE7EB /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F1C15B15B9A69F000EE7EB /* Carbon.framework */; };
+		7270F102B23F427CAAD2E9C8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A941933BCD4B4EAFF4060B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0340286515B9A7B100C905C1 /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyCenter.h; path = DDHotKey/DDHotKeyCenter.h; sourceTree = SOURCE_ROOT; };
+		0340286615B9A7B100C905C1 /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyCenter.m; path = DDHotKey/DDHotKeyCenter.m; sourceTree = SOURCE_ROOT; };
+		0340286F15B9B29100C905C1 /* octo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octo.png; sourceTree = "<group>"; };
+		0340287215B9B6E500C905C1 /* logo_gist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_gist.png; path = ../../Downloads/logo_gist.png; sourceTree = "<group>"; };
+		03B4104015B9E66400C18B6F /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "Pods/UAGithubEngine/UAGithubEngine/NSData+Base64.h"; sourceTree = SOURCE_ROOT; };
+		03B4104115B9E66400C18B6F /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "Pods/UAGithubEngine/UAGithubEngine/NSData+Base64.m"; sourceTree = SOURCE_ROOT; };
 		03F1C12B15B99B94000EE7EB /* Gister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gister.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		03F1C12F15B99B94000EE7EB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		03F1C12F15B99B94000EE7EB /* Cocoa.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		03F1C13215B99B94000EE7EB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		03F1C13315B99B94000EE7EB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		03F1C13415B99B94000EE7EB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		03F1C13715B99B94000EE7EB /* Gister-Info.plist */ = {isa = PBXFileReference; path = "Gister-Info.plist"; sourceTree = "<group>"; };
+		03F1C13715B99B94000EE7EB /* Gister-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gister-Info.plist"; sourceTree = "<group>"; };
 		03F1C13915B99B94000EE7EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03F1C13B15B99B94000EE7EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		03F1C13D15B99B94000EE7EB /* Gister-Prefix.pch */ = {isa = PBXFileReference; path = "Gister-Prefix.pch"; sourceTree = "<group>"; };
+		03F1C13D15B99B94000EE7EB /* Gister-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gister-Prefix.pch"; sourceTree = "<group>"; };
 		03F1C13F15B99B94000EE7EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		03F1C14115B99B94000EE7EB /* PXAppDelegate.h */ = {isa = PBXFileReference; path = PXAppDelegate.h; sourceTree = "<group>"; };
+		03F1C14115B99B94000EE7EB /* PXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXAppDelegate.h; sourceTree = "<group>"; };
 		03F1C14215B99B94000EE7EB /* PXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXAppDelegate.m; sourceTree = "<group>"; };
 		03F1C14515B99B94000EE7EB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		03F1C15B15B9A69F000EE7EB /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		B4DB89FFD27C48BB96EA3113 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		E1A941933BCD4B4EAFF4060B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,19 +51,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F1C15C15B9A69F000EE7EB /* Carbon.framework in Frameworks */,
 				03F1C13015B99B94000EE7EB /* Cocoa.framework in Frameworks */,
+				7270F102B23F427CAAD2E9C8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0340286415B9A79A00C905C1 /* DDHotKey */ = {
+			isa = PBXGroup;
+			children = (
+				0340286515B9A7B100C905C1 /* DDHotKeyCenter.h */,
+				0340286615B9A7B100C905C1 /* DDHotKeyCenter.m */,
+			);
+			name = DDHotKey;
+			sourceTree = "<group>";
+		};
 		03F1C12015B99B93000EE7EB = {
 			isa = PBXGroup;
 			children = (
+				0340286F15B9B29100C905C1 /* octo.png */,
+				0340287215B9B6E500C905C1 /* logo_gist.png */,
 				03F1C13515B99B94000EE7EB /* Gister */,
 				03F1C12E15B99B94000EE7EB /* Frameworks */,
 				03F1C12C15B99B94000EE7EB /* Products */,
+				B4DB89FFD27C48BB96EA3113 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +92,10 @@
 		03F1C12E15B99B94000EE7EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03F1C15B15B9A69F000EE7EB /* Carbon.framework */,
 				03F1C12F15B99B94000EE7EB /* Cocoa.framework */,
 				03F1C13115B99B94000EE7EB /* Other Frameworks */,
+				E1A941933BCD4B4EAFF4060B /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -82,6 +113,7 @@
 		03F1C13515B99B94000EE7EB /* Gister */ = {
 			isa = PBXGroup;
 			children = (
+				03F1C15E15B9A6AB000EE7EB /* Vendor */,
 				03F1C14115B99B94000EE7EB /* PXAppDelegate.h */,
 				03F1C14215B99B94000EE7EB /* PXAppDelegate.m */,
 				03F1C14415B99B94000EE7EB /* MainMenu.xib */,
@@ -102,6 +134,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		03F1C15E15B9A6AB000EE7EB /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				03B4104015B9E66400C18B6F /* NSData+Base64.h */,
+				03B4104115B9E66400C18B6F /* NSData+Base64.m */,
+				0340286415B9A79A00C905C1 /* DDHotKey */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,6 +154,7 @@
 				03F1C12715B99B94000EE7EB /* Sources */,
 				03F1C12815B99B94000EE7EB /* Frameworks */,
 				03F1C12915B99B94000EE7EB /* Resources */,
+				8468B767D8AA434EB7DC9F4C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,6 +180,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = 03F1C12015B99B93000EE7EB;
 			productRefGroup = 03F1C12C15B99B94000EE7EB /* Products */;
@@ -156,10 +200,29 @@
 				03F1C13A15B99B94000EE7EB /* InfoPlist.strings in Resources */,
 				03F1C14015B99B94000EE7EB /* Credits.rtf in Resources */,
 				03F1C14615B99B94000EE7EB /* MainMenu.xib in Resources */,
+				0340287015B9B29100C905C1 /* octo.png in Resources */,
+				0340287315B9B6E500C905C1 /* logo_gist.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8468B767D8AA434EB7DC9F4C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		03F1C12715B99B94000EE7EB /* Sources */ = {
@@ -168,6 +231,8 @@
 			files = (
 				03F1C13C15B99B94000EE7EB /* main.m in Sources */,
 				03F1C14315B99B94000EE7EB /* PXAppDelegate.m in Sources */,
+				0340286715B9A7B100C905C1 /* DDHotKeyCenter.m in Sources */,
+				03B4104215B9E66400C18B6F /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,10 +315,16 @@
 		};
 		03F1C14A15B99B94000EE7EB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4DB89FFD27C48BB96EA3113 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gister/Gister-Prefix.pch";
 				INFOPLIST_FILE = "Gister/Gister-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					SystemConfiguration,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -261,10 +332,16 @@
 		};
 		03F1C14B15B99B94000EE7EB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4DB89FFD27C48BB96EA3113 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gister/Gister-Prefix.pch";
 				INFOPLIST_FILE = "Gister/Gister-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					SystemConfiguration,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -289,6 +366,7 @@
 				03F1C14B15B99B94000EE7EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

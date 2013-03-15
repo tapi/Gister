@@ -53,15 +53,17 @@
 	[_preferences setReleasedWhenClosed:NO];
 	[_preferences close];
 	[_preferences setRestorable:NO];
+	
+	[_window setRestorable:NO];
 
 	//Try and login if we have saved credentials
 	NSError *accountsError;
 	if ([SSKeychain accountsForService:kServiceKey error:&accountsError]) [self performLoginWithSavedCredentials];
 	else NSLog(@"Error retrieving accounts, %@", [accountsError localizedDescription]);
 	
-	//Login was unsuccessful or this is our first run so diplay the login window
-	if (!_GHEngine.isReachable) [self displayLoginWindow];
-	else [self dismissLoginWindow];
+	//display or hide login widow as appropriate
+	if (_GHEngine.isReachable) [self dismissLoginWindow];
+	else [self displayLoginWindow];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
@@ -86,7 +88,6 @@
 		[_fileNameField becomeFirstResponder];
 	}
 }
-
 
 #pragma mark - Login Window Methods
 - (void)dismissLoginWindow
@@ -152,6 +153,12 @@
 }
 
 #pragma mark - Gist Window Methods
+- (void)dismissGistWindow
+{
+	[_gistWindow close];
+	[[NSRunningApplication currentApplication] hide];
+}
+
 - (IBAction)submitGistDidGetPressed:(id)sender
 {
 	NSString *fileName = [_fileNameField stringValue];
@@ -175,6 +182,7 @@
 		NSPasteboard *pb = [NSPasteboard generalPasteboard];
 		[pb clearContents];
 		[pb writeObjects:@[ gistURL]];
+		[self dismissGistWindow];
 	} failure:^(NSError *error) {
 		//TODO: do something to indicate error
 		NSLog(@"We suck: %@", [error localizedDescription]);

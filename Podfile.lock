@@ -1,5 +1,0 @@
-PODS:
-  - UAGithubEngine (2.3)
-
-DEPENDENCIES:
-  - UAGithubEngine (~> 2.3)

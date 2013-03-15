@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0340286715B9A7B100C905C1 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0340286615B9A7B100C905C1 /* DDHotKeyCenter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0340287015B9B29100C905C1 /* octo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0340286F15B9B29100C905C1 /* octo.png */; };
 		0340287315B9B6E500C905C1 /* logo_gist.png in Resources */ = {isa = PBXBuildFile; fileRef = 0340287215B9B6E500C905C1 /* logo_gist.png */; };
-		03B4104215B9E66400C18B6F /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B4104115B9E66400C18B6F /* NSData+Base64.m */; };
+		038C396116F36C1300C8378F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038C396016F36C1300C8378F /* Security.framework */; };
 		03F1C13015B99B94000EE7EB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F1C12F15B99B94000EE7EB /* Cocoa.framework */; };
 		03F1C13A15B99B94000EE7EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03F1C13815B99B94000EE7EB /* InfoPlist.strings */; };
 		03F1C13C15B99B94000EE7EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F1C13B15B99B94000EE7EB /* main.m */; };
@@ -22,12 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0340286515B9A7B100C905C1 /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyCenter.h; path = DDHotKey/DDHotKeyCenter.h; sourceTree = SOURCE_ROOT; };
-		0340286615B9A7B100C905C1 /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyCenter.m; path = DDHotKey/DDHotKeyCenter.m; sourceTree = SOURCE_ROOT; };
 		0340286F15B9B29100C905C1 /* octo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octo.png; sourceTree = "<group>"; };
 		0340287215B9B6E500C905C1 /* logo_gist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_gist.png; path = ../../Downloads/logo_gist.png; sourceTree = "<group>"; };
-		03B4104015B9E66400C18B6F /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "Pods/UAGithubEngine/UAGithubEngine/NSData+Base64.h"; sourceTree = SOURCE_ROOT; };
-		03B4104115B9E66400C18B6F /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "Pods/UAGithubEngine/UAGithubEngine/NSData+Base64.m"; sourceTree = SOURCE_ROOT; };
+		038C396016F36C1300C8378F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		03F1C12B15B99B94000EE7EB /* Gister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03F1C12F15B99B94000EE7EB /* Cocoa.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		03F1C13215B99B94000EE7EB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -51,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				038C396116F36C1300C8378F /* Security.framework in Frameworks */,
 				03F1C15C15B9A69F000EE7EB /* Carbon.framework in Frameworks */,
 				03F1C13015B99B94000EE7EB /* Cocoa.framework in Frameworks */,
 				7270F102B23F427CAAD2E9C8 /* libPods.a in Frameworks */,
@@ -60,18 +57,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0340286415B9A79A00C905C1 /* DDHotKey */ = {
-			isa = PBXGroup;
-			children = (
-				0340286515B9A7B100C905C1 /* DDHotKeyCenter.h */,
-				0340286615B9A7B100C905C1 /* DDHotKeyCenter.m */,
-			);
-			name = DDHotKey;
-			sourceTree = "<group>";
-		};
 		03F1C12015B99B93000EE7EB = {
 			isa = PBXGroup;
 			children = (
+				038C396016F36C1300C8378F /* Security.framework */,
 				0340286F15B9B29100C905C1 /* octo.png */,
 				0340287215B9B6E500C905C1 /* logo_gist.png */,
 				03F1C13515B99B94000EE7EB /* Gister */,
@@ -113,7 +102,6 @@
 		03F1C13515B99B94000EE7EB /* Gister */ = {
 			isa = PBXGroup;
 			children = (
-				03F1C15E15B9A6AB000EE7EB /* Vendor */,
 				03F1C14115B99B94000EE7EB /* PXAppDelegate.h */,
 				03F1C14215B99B94000EE7EB /* PXAppDelegate.m */,
 				03F1C14415B99B94000EE7EB /* MainMenu.xib */,
@@ -132,16 +120,6 @@
 				03F1C13E15B99B94000EE7EB /* Credits.rtf */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		03F1C15E15B9A6AB000EE7EB /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				03B4104015B9E66400C18B6F /* NSData+Base64.h */,
-				03B4104115B9E66400C18B6F /* NSData+Base64.m */,
-				0340286415B9A79A00C905C1 /* DDHotKey */,
-			);
-			name = Vendor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,7 +150,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = PX;
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 03F1C12515B99B93000EE7EB /* Build configuration list for PBXProject "Gister" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -231,8 +209,6 @@
 			files = (
 				03F1C13C15B99B94000EE7EB /* main.m in Sources */,
 				03F1C14315B99B94000EE7EB /* PXAppDelegate.m in Sources */,
-				0340286715B9A7B100C905C1 /* DDHotKeyCenter.m in Sources */,
-				03B4104215B9E66400C18B6F /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +248,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -299,6 +279,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -317,6 +301,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B4DB89FFD27C48BB96EA3113 /* Pods.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gister/Gister-Prefix.pch";
 				INFOPLIST_FILE = "Gister/Gister-Info.plist";
@@ -334,6 +319,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B4DB89FFD27C48BB96EA3113 /* Pods.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gister/Gister-Prefix.pch";
 				INFOPLIST_FILE = "Gister/Gister-Info.plist";

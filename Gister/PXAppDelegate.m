@@ -9,8 +9,10 @@
 #import "PXAppDelegate.h"
 #import <Carbon/Carbon.h>
 #import "DDHotKeyCenter.h"
+#import "SSKeychain.h"
 
-#define kPublicGists @"PublicGists"
+#define kPublicGists	@"PublicGists"
+#define kServiceKey		@"com.500px.Gister"
 
 @implementation PXAppDelegate
 @synthesize preferences = _preferences;
@@ -38,10 +40,9 @@
 	
 	DDHotKeyCenter *keyCenter = [[DDHotKeyCenter alloc] init];
 	BOOL success = [keyCenter registerHotKeyWithKeyCode:keyCode modifierFlags:modifierFlags target:self action:@selector(hotkeyAction:) object:nil];
-	if (success)
-		NSLog(@"Successfully registered Gister");
-	else
-		NSLog(@"Failed to register Gister");
+
+	if (success) NSLog(@"Successfully registered Gister");
+	else NSLog(@"Failed to register Gister");
 
 	
 	//Setup UI
@@ -52,11 +53,15 @@
 	[_preferences setReleasedWhenClosed:NO];
 	[_preferences close];
 	[_preferences setRestorable:NO];
+
+	//Try and login if we have saved credentials
+	NSError *accountsError;
+	if ([SSKeychain accountsForService:kServiceKey error:&accountsError]) [self performLoginWithSavedCredentials];
+	else NSLog(@"Error retrieving accounts, %@", [accountsError localizedDescription]);
 	
-	[_window orderFront:nil];
-	[_window makeKeyWindow];
-	
-	[_loginField becomeFirstResponder];
+	//Login was unsuccessful or this is our first run so diplay the login window
+	if (!_GHEngine.isReachable) [self displayLoginWindow];
+	else [self dismissLoginWindow];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
@@ -70,8 +75,7 @@
 {
 	NSLog(@"Gister recieved key");
 	
-	if (_GHEngine)
-	{
+	if (_GHEngine.isReachable) {
 		NSPasteboard *pb = [NSPasteboard generalPasteboard];
 		
 		[_gistContentView setString:@""];
@@ -85,33 +89,67 @@
 
 
 #pragma mark - Login Window Methods
+- (void)dismissLoginWindow
+{
+	[_window close];
+	[[NSRunningApplication currentApplication] hide];
+}
+
+- (void)displayLoginWindow
+{
+	[_window orderFront:nil];
+	[_window makeKeyWindow];
+	
+	[_loginField becomeFirstResponder];
+}
+
 - (void)controlTextDidEndEditing:(NSNotification *)notification
 {
 	id sender = [notification object];
-	if (sender == _loginField && [[sender stringValue] isEqualToString:@""] == NO)
-	{
-		[_passwordField becomeFirstResponder];
-	}
-	
-	if (sender == _passwordField && [[sender stringValue] isEqualToString:@""] == NO)
-	{
-		[self login];
-	}
+
+	//User hit return from the username field, make the password field the first responder
+	if (sender == _loginField && [[sender stringValue] isEqualToString:@""] == NO) [_passwordField becomeFirstResponder];
+		
+	//User hit return from the password field, attempt to login
+	if (sender == _passwordField && [[sender stringValue] isEqualToString:@""] == NO) [self performLoginFromWindow];
 }
 
-- (void)login
+- (void)performLoginFromWindow
 {
 	NSString *user = [_loginField stringValue];
 	NSString *pass = [_passwordField stringValue];
 	
 	_GHEngine = [[UAGithubEngine alloc] initWithUsername:user password:pass withReachability:NO];
-	if (_GHEngine)
-	{
-		[_window close];
-		[[NSRunningApplication currentApplication] hide];
+	if (_GHEngine.isReachable) {
+		//Close the login window and get out of the users way
+		[self dismissLoginWindow];
+		
+		//Save the successful login creds
+		NSError *keyChainError;
+		if (![SSKeychain setPassword:pass forService:kServiceKey account:user error:&keyChainError]) NSLog(@"Error saving password %@", [keyChainError localizedDescription]);
+	}
+	else {
+		//Do error stuff
 	}
 }
 
+- (void)performLoginWithSavedCredentials
+{
+	NSError *keyChainError;
+	
+	//Get our user acct
+	NSString *user = [[[SSKeychain accountsForService:kServiceKey error:&keyChainError] lastObject] valueForKey:kSSKeychainAccountKey];
+	NSString *pass;
+
+	//If we have a user grab their password
+	if (user) pass = [SSKeychain passwordForService:kServiceKey account:user error:&keyChainError];
+	else NSLog(@"Error retrieving account, %@", [keyChainError localizedDescription]);
+
+	//Log the password retrieval error if any
+	if(!pass) NSLog(@"Error retrieving password, %@", [keyChainError localizedDescription]);
+	
+	_GHEngine = [[UAGithubEngine alloc] initWithUsername:user password:pass withReachability:NO];
+}
 
 #pragma mark - Gist Window Methods
 - (IBAction)submitGistDidGetPressed:(id)sender
@@ -151,9 +189,21 @@
 
 - (IBAction)logout:(id)sender
 {
+	//Get rid of our engine
 	self.GHEngine = nil;
 	
+	//Close the preferences windows
 	[_preferences close];
+
+	//remove stored credentials
+	NSError *keyChainError;
+	
+	//Get our user acct
+	NSString *user = [[[SSKeychain accountsForService:kServiceKey error:&keyChainError] lastObject] valueForKey:kSSKeychainAccountKey];
+	
+	//Delete their password if able
+	if (!user) NSLog(@"Error retrieving account, %@", [keyChainError localizedDescription]);
+	else if (![SSKeychain deletePasswordForService:kServiceKey account:user error:&keyChainError]) NSLog(@"Error deleteing password, %@", [keyChainError localizedDescription]);
 	
 	[_window orderFront:nil];
 	[_window makeKeyWindow];
@@ -165,9 +215,6 @@
 - (void)controlTextDidChange:(NSNotification *)notification
 {
 	id sender = [notification object];
-	if (sender == _fileNameField)
-	{
-		[_gistWindow setTitle:[sender stringValue]];
-	}
+	if (sender == _fileNameField) [_gistWindow setTitle:[sender stringValue]];
 }
 @end

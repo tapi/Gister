@@ -143,9 +143,7 @@
 	NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
 	if (self.username && self.password)
 	{
-		NSData *data = [NSData dataWithData:[[NSString stringWithFormat:@"%@:%@", self.username, self.password] dataUsingEncoding:NSUTF8StringEncoding]];
-		NSString *headerval = [data base64EncodedString];
-		[urlRequest setValue:[NSString stringWithFormat:@"Basic %@", headerval] forHTTPHeaderField:@"Authorization"];
+		[urlRequest setValue:[NSString stringWithFormat:@"Basic %@", [[[NSString stringWithFormat:@"%@:%@", self.username, self.password] dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString]] forHTTPHeaderField:@"Authorization"];	
 	}
 
 	if (jsonData)

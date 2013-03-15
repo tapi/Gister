@@ -17,16 +17,16 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Gister/PXAppDelegate.m"
-         timestampString = "364516821.628463"
+         filePath = "Pods/UICKeyChainStore/UICKeyChainStore.m"
+         timestampString = "385056993.82766"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
-         landmarkName = "-controlTextDidEndEditing:"
+         startingLineNumber = "125"
+         endingLineNumber = "125"
+         landmarkName = "+setData:forKey:service:accessGroup:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
@@ -35,7 +35,7 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         scope = "0"
+         scope = "1"
          stopOnStyle = "0">
       </ExceptionBreakpoint>
    </ExceptionBreakpoints>

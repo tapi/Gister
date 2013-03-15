@@ -58,12 +58,17 @@
 
 	//Try and login if we have saved credentials
 	NSError *accountsError;
-	if ([SSKeychain accountsForService:kServiceKey error:&accountsError]) [self performLoginWithSavedCredentials];
-	else NSLog(@"Error retrieving accounts, %@", [accountsError localizedDescription]);
 	
-	//display or hide login widow as appropriate
-	if (_GHEngine.isReachable) [self dismissLoginWindow];
-	else [self displayLoginWindow];
+	//If we have no stored credentials log the error and display the login window
+	if (![SSKeychain accountsForService:kServiceKey error:&accountsError] || ![self performLoginWithSavedCredentials]) {
+		NSLog(@"Error retrieving accounts, %@", [accountsError localizedDescription]);
+		[self displayLoginWindow];
+	}
+	else {
+		NSLog(@"Successfully retrieved credentials");
+		[self dismissLoginWindow];
+		[[NSApplication sharedApplication] hide:[NSApplication sharedApplication]];
+	}
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
@@ -77,27 +82,30 @@
 {
 	NSLog(@"Gister recieved key");
 	
-	if (_GHEngine.isReachable) {
-		NSPasteboard *pb = [NSPasteboard generalPasteboard];
-		
-		[_gistContentView setString:@""];
-		[_gistContentView readSelectionFromPasteboard:pb type:@"public.utf8-plain-text"];
-		
-		[_gistWindow orderFrontRegardless];
-		[_gistWindow makeKeyWindow];
-		[_fileNameField becomeFirstResponder];
-	}
+	NSPasteboard *pb = [NSPasteboard generalPasteboard];
+	
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	[_gistContentView setString:@""];
+	[_gistContentView readSelectionFromPasteboard:pb type:@"public.utf8-plain-text"];
+	
+	[_gistWindow orderFrontRegardless];
+	[_gistWindow makeKeyWindow];
+	[_fileNameField becomeFirstResponder];
 }
 
 #pragma mark - Login Window Methods
 - (void)dismissLoginWindow
 {
 	[_window close];
-	[[NSRunningApplication currentApplication] hide];
+	
+	//If we're not showing the gist window then hide the app
+	if (!_gistWindow.isVisible) [[NSApplication sharedApplication] hide:[NSApplication sharedApplication]];
 }
 
 - (void)displayLoginWindow
 {
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+
 	[_window orderFront:nil];
 	[_window makeKeyWindow];
 	
@@ -120,21 +128,22 @@
 	NSString *user = [_loginField stringValue];
 	NSString *pass = [_passwordField stringValue];
 	
+	//Bail early if the user did not enter credentials
+	if (user.length == 0 || pass.length == 0) return;
+	
 	_GHEngine = [[UAGithubEngine alloc] initWithUsername:user password:pass withReachability:NO];
-	if (_GHEngine.isReachable) {
-		//Close the login window and get out of the users way
+	if (_GHEngine) {
+		//Close the login window and get out of the users way if we created our github object
 		[self dismissLoginWindow];
 		
 		//Save the successful login creds
 		NSError *keyChainError;
 		if (![SSKeychain setPassword:pass forService:kServiceKey account:user error:&keyChainError]) NSLog(@"Error saving password %@", [keyChainError localizedDescription]);
 	}
-	else {
-		//Do error stuff
-	}
 }
 
-- (void)performLoginWithSavedCredentials
+//Misnomer, theres no actuall login taking place were just retrieving the credentials from the keychain
+- (BOOL)performLoginWithSavedCredentials
 {
 	NSError *keyChainError;
 	
@@ -149,7 +158,12 @@
 	//Log the password retrieval error if any
 	if(!pass) NSLog(@"Error retrieving password, %@", [keyChainError localizedDescription]);
 	
+	if (!user || !pass) return NO;
+	
 	_GHEngine = [[UAGithubEngine alloc] initWithUsername:user password:pass withReachability:NO];
+	if (_GHEngine) return YES;
+	
+	return NO;
 }
 
 #pragma mark - Gist Window Methods
@@ -161,6 +175,11 @@
 
 - (IBAction)submitGistDidGetPressed:(id)sender
 {
+	if (!_GHEngine) {
+		[self displayLoginWindow];
+		return;
+	}
+	
 	NSString *fileName = [_fileNameField stringValue];
 	NSString *summary = [_summaryTextView string];
 	

@@ -9,5 +9,6 @@ This app uses cocoapods so be sure to do a `pod install` and use the workspace.
 
 ## Things to do ##
  - Refactor (since this was a hackday project everythings in the app delegate, blech)
+ - Icon
  - Syntax highlighting
  - Customizable hot keys would be cool

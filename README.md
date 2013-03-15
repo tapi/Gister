@@ -3,6 +3,8 @@
 
 This is a Gist snippet app that manipulates the pasteboard on OSX. Copy the code you want to send to a gist and hit ⌥⌘G and you get a handy little Gist editor window. Once you submit the URL to your gist is sent back to your clipboard so you can easily share it with others.
 
+Get it [here](https://s3.amazonaws.com/SMGister/Gister.zip).
+
 ## Building from source ##
 
 This app uses cocoapods so be sure to do a `pod install` and use the workspace.
